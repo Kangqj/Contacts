@@ -28,5 +28,4 @@
     return [[self imageNamed:image] circleImage];
 }
 
-
 @end

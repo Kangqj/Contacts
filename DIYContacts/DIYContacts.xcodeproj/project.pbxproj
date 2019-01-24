@@ -33,6 +33,7 @@
 		C3FFF88021F99DC30070F2E7 /* NSString+TKUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = C3FFF87A21F99DC30070F2E7 /* NSString+TKUtilities.m */; };
 		C3FFF88121F99DC30070F2E7 /* XHJAddressBook.m in Sources */ = {isa = PBXBuildFile; fileRef = C3FFF87B21F99DC30070F2E7 /* XHJAddressBook.m */; };
 		C3FFF88221F99DC30070F2E7 /* PersonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C3FFF87D21F99DC30070F2E7 /* PersonCell.m */; };
+		C3FFF88521F9A7420070F2E7 /* HeaderImageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = C3FFF88421F9A7420070F2E7 /* HeaderImageUtil.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,8 @@
 		C3FFF87B21F99DC30070F2E7 /* XHJAddressBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHJAddressBook.m; sourceTree = "<group>"; };
 		C3FFF87C21F99DC30070F2E7 /* PersonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonModel.h; sourceTree = "<group>"; };
 		C3FFF87D21F99DC30070F2E7 /* PersonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonCell.m; sourceTree = "<group>"; };
+		C3FFF88321F9A7420070F2E7 /* HeaderImageUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeaderImageUtil.h; sourceTree = "<group>"; };
+		C3FFF88421F9A7420070F2E7 /* HeaderImageUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HeaderImageUtil.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,8 +202,6 @@
 				C35DDEFF2119A457002D7756 /* HeaderViewCell.m */,
 				C35DDF012119A484002D7756 /* FieldViewCell.h */,
 				C35DDF022119A484002D7756 /* FieldViewCell.m */,
-				C35DDEFB21199C93002D7756 /* UIImage+PDExtension.h */,
-				C35DDEFC21199C93002D7756 /* UIImage+PDExtension.m */,
 				C3FFF87321F99DC30070F2E7 /* BeautyAddress */,
 				C35DDEF62119862D002D7756 /* image */,
 				C39EAFB5211851F300E90D3C /* Main.storyboard */,
@@ -243,6 +244,10 @@
 				C3FFF87821F99DC30070F2E7 /* PersonModel.m */,
 				C3FFF87621F99DC30070F2E7 /* XHJAddressBook.h */,
 				C3FFF87B21F99DC30070F2E7 /* XHJAddressBook.m */,
+				C35DDEFB21199C93002D7756 /* UIImage+PDExtension.h */,
+				C35DDEFC21199C93002D7756 /* UIImage+PDExtension.m */,
+				C3FFF88321F9A7420070F2E7 /* HeaderImageUtil.h */,
+				C3FFF88421F9A7420070F2E7 /* HeaderImageUtil.m */,
 			);
 			path = BeautyAddress;
 			sourceTree = "<group>";
@@ -410,6 +415,7 @@
 				C35DDEFD21199C93002D7756 /* UIImage+PDExtension.m in Sources */,
 				C39EAFB4211851F300E90D3C /* ViewController.m in Sources */,
 				C35DDF002119A457002D7756 /* HeaderViewCell.m in Sources */,
+				C3FFF88521F9A7420070F2E7 /* HeaderImageUtil.m in Sources */,
 				C35DDF032119A484002D7756 /* FieldViewCell.m in Sources */,
 				C39EAFBF211851F500E90D3C /* main.m in Sources */,
 				C35DDEEF21194FEE002D7756 /* ContactsTableViewCell.m in Sources */,

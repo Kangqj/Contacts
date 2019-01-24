@@ -41,14 +41,14 @@
     self.navigationItem.rightBarButtonItem = addItem;
     
     _sectionTitles=[NSMutableArray new];
-
+    
     mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, [UIApplication sharedApplication].statusBarFrame.size.height + self.navigationController.navigationBar.frame.size.height, self.view.bounds.size.width, self.view.bounds.size.height - ([UIApplication sharedApplication].statusBarFrame.size.height + self.navigationController.navigationBar.frame.size.height))];
     mainTableView.delegate = self;
     mainTableView.dataSource = self;
     mainTableView.sectionIndexBackgroundColor=[UIColor clearColor];
     mainTableView.sectionIndexColor = [UIColor blackColor];
     [self.view addSubview:mainTableView];
-//    mainTableView.tableFooterView = []
+    mainTableView.tableFooterView = [[UIView alloc] init];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
@@ -280,10 +280,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    PersonModel *contact = [_listContent objectAtIndex:indexPath.row];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    NSArray *sectionArr=[_listContent objectAtIndex:indexPath.section];
+    PersonModel *people = (PersonModel *)[sectionArr objectAtIndex:indexPath.row];
     
     CreateContactViewController *vc = [[CreateContactViewController alloc] init];
-    vc.curContact = contact;
+    vc.curContact = people;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

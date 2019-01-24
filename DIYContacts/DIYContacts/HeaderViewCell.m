@@ -8,6 +8,7 @@
 
 #import "HeaderViewCell.h"
 #import "UIImage+PDExtension.h"
+#import "HeaderImageUtil.h"
 
 @implementation HeaderViewCell
 
@@ -45,7 +46,7 @@
 
 - (void)loadContactData:(PersonModel *)model
 {
-    [headerBtn setBackgroundImage:model.header forState:UIControlStateNormal];
+    [headerBtn setBackgroundImage:[HeaderImageUtil getPersionHeaderImage:model] forState:UIControlStateNormal];
     
     if (model.isEdit)
     {
@@ -56,6 +57,7 @@
         [headerBtn setTitle:nil forState:UIControlStateNormal];
     }
 }
+
 
 - (void)setHeaderImage
 {

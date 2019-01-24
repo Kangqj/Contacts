@@ -42,8 +42,6 @@
         _phoneNum=[[UILabel alloc]initWithFrame:CGRectMake(70, 30, 160, 25)];
         _phoneNum.font=[UIFont fontWithName:@"STHeitiTC-Light" size:13];
         [self.contentView addSubview:_phoneNum];
-        
- 
     }
     return self;
 }
