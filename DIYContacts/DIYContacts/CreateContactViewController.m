@@ -50,8 +50,88 @@
 
 - (void)doneContactsData
 {
+    CNMutableContact * contact = [[CNMutableContact alloc] init];
+    contact.imageData = UIImagePNGRepresentation([UIImage imageNamed:@"22"]);
+    //设置名字
+    contact.givenName = @"三强";
+    //设置姓氏
+    contact.familyName = @"钱";
+    CNLabeledValue *homeEmail = [CNLabeledValue labeledValueWithLabel:CNLabelHome value:@"316045346@qq.com"];
+    CNLabeledValue *workEmail =[CNLabeledValue labeledValueWithLabel:CNLabelWork value:@"316045346@qq.com"];
+    contact.emailAddresses = @[homeEmail,workEmail];
+    /*
+    //家庭
+    CONTACTS_EXTERN NSString * const CNLabelHome                             NS_AVAILABLE(10_11, 9_0);
+    //工作
+    CONTACTS_EXTERN NSString * const CNLabelWork                             NS_AVAILABLE(10_11, 9_0);
+    //其他
+    CONTACTS_EXTERN NSString * const CNLabelOther                            NS_AVAILABLE(10_11, 9_0);
     
+    // 邮箱地址
+    CONTACTS_EXTERN NSString * const CNLabelEmailiCloud                      NS_AVAILABLE(10_11, 9_0);
+    
+    // url地址
+    CONTACTS_EXTERN NSString * const CNLabelURLAddressHomePage               NS_AVAILABLE(10_11, 9_0);
+    
+    // 日期
+    CONTACTS_EXTERN NSString * const CNLabelDateAnniversary                  NS_AVAILABLE(10_11, 9_0);
+     */
+    
+    contact.phoneNumbers = @[[CNLabeledValue labeledValueWithLabel:CNLabelPhoneNumberiPhone value:[CNPhoneNumber phoneNumberWithStringValue:@"12344312321"]]];
+    CNMutablePostalAddress * homeAdress = [[CNMutablePostalAddress alloc]init];
+    homeAdress.street = @"贝克街";
+    homeAdress.city = @"伦敦";
+    homeAdress.state = @"英国";
+    homeAdress.postalCode = @"221B";
+    contact.postalAddresses = @[[CNLabeledValue labeledValueWithLabel:CNLabelHome value:homeAdress]];
+    NSDateComponents * birthday = [[NSDateComponents  alloc]init];
+    birthday.day=7;
+    birthday.month=5;
+    birthday.year=1992;
+    contact.birthday=birthday;
+    
+    //    //初始化方法
+    CNSaveRequest * saveRequest = [[CNSaveRequest alloc]init];
+    //    添加联系人（可以）
+    [saveRequest addContact:contact toContainerWithIdentifier:nil];
+    //    写入
+    CNContactStore * store = [[CNContactStore alloc]init];
+    [store executeSaveRequest:saveRequest error:nil];
 }
+
+- (void)deleteContact
+{
+    CNContactStore * store = [[CNContactStore alloc]init];
+    //检索条件，检索所有名字中GivenName是W的联系人
+    NSPredicate * predicate = [CNContact predicateForContactsMatchingName:@"W"];
+    //提取数据
+    NSArray * contacts = [store unifiedContactsMatchingPredicate:predicate keysToFetch:@[CNContactGivenNameKey] error:nil];
+    CNMutableContact *contact1 = [contacts objectAtIndex:0];
+    
+    //    //初始化方法
+    CNSaveRequest * saveRequest = [[CNSaveRequest alloc]init];
+    
+    //删除联系人（不行）
+    [saveRequest deleteContact:contact1];
+}
+
+- (void)updateContact
+{
+    CNContactStore * store = [[CNContactStore alloc]init];
+    //检索条件，检索所有名字中有zhang的联系人
+    NSPredicate * predicate = [CNContact predicateForContactsMatchingName:@"张"];
+    //提取数据
+    NSArray * contacts = [store unifiedContactsMatchingPredicate:predicate keysToFetch:@[CNContactGivenNameKey] error:nil];
+    CNMutableContact *contact2 = [[contacts objectAtIndex:0] mutableCopy];
+    //    修改联系人的属性
+    contact2.givenName = @"asdfasdfas";
+    //    实例化一个CNSaveRequest
+    CNSaveRequest * saveRequest = [[CNSaveRequest alloc]init];
+    [saveRequest updateContact:contact2];
+    [store executeSaveRequest:saveRequest error:nil];
+}
+
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {

@@ -12,6 +12,15 @@
 
 + (UIImage *)getPersionHeaderImage:(PersonModel *)person
 {
+    if (person.headerImagePath)
+    {
+        return [UIImage imageWithContentsOfFile:person.headerImagePath];
+    }
+    else if (person.header)
+    {
+        return person.header;
+    }
+    
     NSString *title = person.phonename;
     NSString *fid = person.tel;
     

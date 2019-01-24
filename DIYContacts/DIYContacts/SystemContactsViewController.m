@@ -70,6 +70,32 @@ CNContactJobTitleKey, \
     }
 }
 
+- (void)__checkAuthorizationStatus
+{
+    //这里有一个枚举类:CNEntityType,不过没关系，只有一个值:CNEntityTypeContacts
+    switch ([CNContactStore authorizationStatusForEntityType:CNEntityTypeContacts])
+    {
+            //存在权限
+        case CNAuthorizationStatusAuthorized:
+            //获取通讯录
+            
+            break;
+            
+            //权限未知
+        case CNAuthorizationStatusNotDetermined:
+            //请求权限
+            
+            break;
+            //如果没有权限
+        case CNAuthorizationStatusRestricted:
+        case CNAuthorizationStatusDenied://需要提示
+            break;
+            
+        default:
+            break;
+
+    }
+}
 
 
 - (void)fetchContactWithContactStore:(CNContactStore *)contactStore
