@@ -1,9 +1,9 @@
 //
-//  XHJAddressBook.h
-//  BM
+//  AddressBookManager.h
+//  DIYContacts
 //
-//  Created by yuhuajun on 15/7/13.
-//  Copyright (c) 2015年 yuhuajun. All rights reserved.
+//  Created by kangqijun on 2019/1/30.
+//  Copyright © 2019 Kangqijun. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -12,7 +12,8 @@
 #import <MessageUI/MessageUI.h>
 @class PersonModel;
 typedef void (^PersonsBlock)(NSMutableArray *personArr);
-@interface XHJAddressBook : NSObject
+
+@interface AddressBookManager : NSObject
 {
     NSArray *_addressArr;
     NSMutableArray *_persons;
@@ -25,5 +26,7 @@ typedef void (^PersonsBlock)(NSMutableArray *personArr);
 //@property (nonatomic,strong) PersonsBlock getPersons;
 @property (strong, nonatomic) NSMutableArray *sectionTitles;
 
--(NSMutableArray*)getAllPerson;
++ (AddressBookManager *)sharedManager;
+- (NSMutableArray *)getAllPerson;
+
 @end

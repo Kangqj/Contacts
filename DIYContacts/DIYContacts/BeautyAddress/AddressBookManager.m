@@ -1,16 +1,28 @@
 //
-//  XHJAddressBook.m
-//  BM
+//  AddressBookManager.m
+//  DIYContacts
 //
-//  Created by yuhuajun on 15/7/13.
-//  Copyright (c) 2015年 yuhuajun. All rights reserved.
+//  Created by kangqijun on 2019/1/30.
+//  Copyright © 2019 Kangqijun. All rights reserved.
 //
 
-#import "XHJAddressBook.h"
+#import "AddressBookManager.h"
 #import "PersonModel.h"
 #import  "NSString+TKUtilities.h"
 
-@implementation XHJAddressBook
+@implementation AddressBookManager
+
+
++ (AddressBookManager *)sharedManager
+{
+    static AddressBookManager *inst = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        inst = [[AddressBookManager alloc] init];
+    });
+    return inst;
+}
+
 - (instancetype)init
 {
     self = [super init];
@@ -20,11 +32,11 @@
         _listContent = [NSMutableArray new];
         _list2Content=[NSMutableArray new];
         _sectionTitles=[NSMutableArray new];
- 
+        
     }
     return self;
 }
- 
+
 -(UILocalizedIndexedCollation *)addbookSort:(NSMutableArray*)personArr
 {
     // 对数据进行排序，并按首字母分类
@@ -51,7 +63,7 @@
     
     for (NSMutableArray *sectionArray in sectionArrays) {
         NSArray *sortedSection = [theCollation sortedArrayFromArray:sectionArray collationStringSelector:@selector(firstName)];
-
+        
         [_listContent addObject:sortedSection];
     }
     return  theCollation;
@@ -67,8 +79,8 @@
     int staticid=ABAddressBookGetAuthorizationStatus();
     if(staticid==2)//拒绝授权返回
     {
-      
-         return nil;
+        
+        return nil;
     }
     NSLog(@"staticid:%d",staticid);
     dispatch_semaphore_t sema = dispatch_semaphore_create(0);//发出访问通讯录的请求
@@ -157,15 +169,15 @@
     [self.sectionTitles removeAllObjects];
     
     [self.sectionTitles addObjectsFromArray:[theCollation sectionTitles]];
- 
+    
     for (PersonModel *addressBook in addressBookTemp) {
         if(addressBook.name1!=nil)
         {
             
-          NSInteger sect = [theCollation sectionForObject:addressBook
-                    collationStringSelector:@selector(name1)];
-          addressBook.sectionNumber = sect;
-          //给各个名字放入正确的标签
+            NSInteger sect = [theCollation sectionForObject:addressBook
+                                    collationStringSelector:@selector(name1)];
+            addressBook.sectionNumber = sect;
+            //给各个名字放入正确的标签
         }
     }
     
@@ -182,20 +194,67 @@
     }
     
     for (NSMutableArray *sectionArray in sectionArrays) {
- 
+        
         PersonModel *person=(PersonModel*)sectionArray.firstObject;
         if(person.name1==nil||[person.name1 isEqualToString:@""])
         {
             continue;
         }
-       if (person.name1 != nil)
+        if (person.name1 != nil)
         {
-           NSArray *sortedSection = [theCollation sortedArrayFromArray:sectionArray collationStringSelector:@selector(name1)];
-          [_list2Content addObject:sortedSection];
+            NSArray *sortedSection = [theCollation sortedArrayFromArray:sectionArray collationStringSelector:@selector(name1)];
+            [_list2Content addObject:sortedSection];
         }
     }
-
+    
     return _list2Content;
+}
+
+
+- (void)sortAndFilterName:(NSMutableArray *)addressBookTemp
+{
+    // 对数据进行排序，并按首字母分类
+    UILocalizedIndexedCollation *theCollation = [UILocalizedIndexedCollation currentCollation];
+    [self.sectionTitles removeAllObjects];
+    
+    [self.sectionTitles addObjectsFromArray:[theCollation sectionTitles]];
+    
+    for (PersonModel *addressBook in addressBookTemp) {
+        if(addressBook.name1!=nil)
+        {
+            
+            NSInteger sect = [theCollation sectionForObject:addressBook
+                                    collationStringSelector:@selector(name1)];
+            addressBook.sectionNumber = sect;
+            //给各个名字放入正确的标签
+        }
+    }
+    
+    NSInteger highSection = [[theCollation sectionTitles] count];//27
+    NSMutableArray *sectionArrays = [NSMutableArray arrayWithCapacity:highSection];
+    for (int i=0; i<=highSection; i++) {
+        NSMutableArray *sectionArray = [NSMutableArray arrayWithCapacity:1];
+        [sectionArrays addObject:sectionArray];
+    }
+    
+    //把对应的名字放入这个27个数组
+    for (PersonModel *addressBook in addressBookTemp) {
+        [(NSMutableArray *)[sectionArrays objectAtIndex:addressBook.sectionNumber] addObject:addressBook];
+    }
+    
+    for (NSMutableArray *sectionArray in sectionArrays) {
+        
+        PersonModel *person=(PersonModel*)sectionArray.firstObject;
+        if(person.name1==nil||[person.name1 isEqualToString:@""])
+        {
+            continue;
+        }
+        if (person.name1 != nil)
+        {
+            NSArray *sortedSection = [theCollation sortedArrayFromArray:sectionArray collationStringSelector:@selector(name1)];
+            [_list2Content addObject:sortedSection];
+        }
+    }
 }
 
 -(void)dealloc
@@ -207,7 +266,7 @@
     _persons=nil;
     _listContent =nil;
     _list2Content=nil;
- 
+    
 }
 
 @end

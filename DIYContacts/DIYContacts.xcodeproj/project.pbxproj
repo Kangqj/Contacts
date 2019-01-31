@@ -28,10 +28,10 @@
 		C3AA7812211D75A700B170AD /* icon_msg.png in Resources */ = {isa = PBXBuildFile; fileRef = C3AA7810211D75A600B170AD /* icon_msg.png */; };
 		C3AA7813211D75A700B170AD /* icon_call.png in Resources */ = {isa = PBXBuildFile; fileRef = C3AA7811211D75A700B170AD /* icon_call.png */; };
 		C3AA7815211D75F000B170AD /* icon_email.png in Resources */ = {isa = PBXBuildFile; fileRef = C3AA7814211D75F000B170AD /* icon_email.png */; };
+		C3ACCC68220193E80010D065 /* AddressBookManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C3ACCC67220193E80010D065 /* AddressBookManager.m */; };
 		C3FFF87E21F99DC30070F2E7 /* CDFInitialsAvatar.m in Sources */ = {isa = PBXBuildFile; fileRef = C3FFF87521F99DC30070F2E7 /* CDFInitialsAvatar.m */; };
 		C3FFF87F21F99DC30070F2E7 /* PersonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C3FFF87821F99DC30070F2E7 /* PersonModel.m */; };
 		C3FFF88021F99DC30070F2E7 /* NSString+TKUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = C3FFF87A21F99DC30070F2E7 /* NSString+TKUtilities.m */; };
-		C3FFF88121F99DC30070F2E7 /* XHJAddressBook.m in Sources */ = {isa = PBXBuildFile; fileRef = C3FFF87B21F99DC30070F2E7 /* XHJAddressBook.m */; };
 		C3FFF88221F99DC30070F2E7 /* PersonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C3FFF87D21F99DC30070F2E7 /* PersonCell.m */; };
 		C3FFF88521F9A7420070F2E7 /* HeaderImageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = C3FFF88421F9A7420070F2E7 /* HeaderImageUtil.m */; };
 /* End PBXBuildFile section */
@@ -92,14 +92,14 @@
 		C3AA7810211D75A600B170AD /* icon_msg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_msg.png; sourceTree = "<group>"; };
 		C3AA7811211D75A700B170AD /* icon_call.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_call.png; sourceTree = "<group>"; };
 		C3AA7814211D75F000B170AD /* icon_email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_email.png; sourceTree = "<group>"; };
+		C3ACCC66220193E80010D065 /* AddressBookManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddressBookManager.h; sourceTree = "<group>"; };
+		C3ACCC67220193E80010D065 /* AddressBookManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddressBookManager.m; sourceTree = "<group>"; };
 		C3FFF87421F99DC30070F2E7 /* NSString+TKUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+TKUtilities.h"; sourceTree = "<group>"; };
 		C3FFF87521F99DC30070F2E7 /* CDFInitialsAvatar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDFInitialsAvatar.m; sourceTree = "<group>"; };
-		C3FFF87621F99DC30070F2E7 /* XHJAddressBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHJAddressBook.h; sourceTree = "<group>"; };
 		C3FFF87721F99DC30070F2E7 /* PersonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonCell.h; sourceTree = "<group>"; };
 		C3FFF87821F99DC30070F2E7 /* PersonModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonModel.m; sourceTree = "<group>"; };
 		C3FFF87921F99DC30070F2E7 /* CDFInitialsAvatar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDFInitialsAvatar.h; sourceTree = "<group>"; };
 		C3FFF87A21F99DC30070F2E7 /* NSString+TKUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+TKUtilities.m"; sourceTree = "<group>"; };
-		C3FFF87B21F99DC30070F2E7 /* XHJAddressBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHJAddressBook.m; sourceTree = "<group>"; };
 		C3FFF87C21F99DC30070F2E7 /* PersonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonModel.h; sourceTree = "<group>"; };
 		C3FFF87D21F99DC30070F2E7 /* PersonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonCell.m; sourceTree = "<group>"; };
 		C3FFF88321F9A7420070F2E7 /* HeaderImageUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeaderImageUtil.h; sourceTree = "<group>"; };
@@ -234,16 +234,16 @@
 		C3FFF87321F99DC30070F2E7 /* BeautyAddress */ = {
 			isa = PBXGroup;
 			children = (
+				C3ACCC66220193E80010D065 /* AddressBookManager.h */,
+				C3ACCC67220193E80010D065 /* AddressBookManager.m */,
+				C3FFF87C21F99DC30070F2E7 /* PersonModel.h */,
+				C3FFF87821F99DC30070F2E7 /* PersonModel.m */,
 				C3FFF87921F99DC30070F2E7 /* CDFInitialsAvatar.h */,
 				C3FFF87521F99DC30070F2E7 /* CDFInitialsAvatar.m */,
 				C3FFF87421F99DC30070F2E7 /* NSString+TKUtilities.h */,
 				C3FFF87A21F99DC30070F2E7 /* NSString+TKUtilities.m */,
 				C3FFF87721F99DC30070F2E7 /* PersonCell.h */,
 				C3FFF87D21F99DC30070F2E7 /* PersonCell.m */,
-				C3FFF87C21F99DC30070F2E7 /* PersonModel.h */,
-				C3FFF87821F99DC30070F2E7 /* PersonModel.m */,
-				C3FFF87621F99DC30070F2E7 /* XHJAddressBook.h */,
-				C3FFF87B21F99DC30070F2E7 /* XHJAddressBook.m */,
 				C35DDEFB21199C93002D7756 /* UIImage+PDExtension.h */,
 				C35DDEFC21199C93002D7756 /* UIImage+PDExtension.m */,
 				C3FFF88321F9A7420070F2E7 /* HeaderImageUtil.h */,
@@ -411,7 +411,6 @@
 			files = (
 				C35DDEE921194E30002D7756 /* SystemContactsViewController.m in Sources */,
 				C35DDEEC21194E6C002D7756 /* CreateContactViewController.m in Sources */,
-				C3FFF88121F99DC30070F2E7 /* XHJAddressBook.m in Sources */,
 				C35DDEFD21199C93002D7756 /* UIImage+PDExtension.m in Sources */,
 				C39EAFB4211851F300E90D3C /* ViewController.m in Sources */,
 				C35DDF002119A457002D7756 /* HeaderViewCell.m in Sources */,
@@ -421,6 +420,7 @@
 				C35DDEEF21194FEE002D7756 /* ContactsTableViewCell.m in Sources */,
 				C39EAFB1211851F300E90D3C /* AppDelegate.m in Sources */,
 				C35DDEF521198557002D7756 /* SystemContactsTableViewCell.m in Sources */,
+				C3ACCC68220193E80010D065 /* AddressBookManager.m in Sources */,
 				C3FFF87F21F99DC30070F2E7 /* PersonModel.m in Sources */,
 				C3FFF87E21F99DC30070F2E7 /* CDFInitialsAvatar.m in Sources */,
 				C3FFF88221F99DC30070F2E7 /* PersonCell.m in Sources */,

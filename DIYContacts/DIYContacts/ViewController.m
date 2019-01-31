@@ -15,14 +15,13 @@
 #import <CoreTelephony/CTCallCenter.h>
 #import <CoreTelephony/CTCall.h>
 #import "CreateContactViewController.h"
-#import "XHJAddressBook.h"
-#import  "PersonModel.h"
+#import "AddressBookManager.h"
+#import "PersonModel.h"
 #import "PersonCell.h"
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource, CNContactPickerDelegate, CNContactViewControllerDelegate>
 {
     UITableView *mainTableView;
-    XHJAddressBook *_addBook;
 }
 
 @property (nonatomic, strong) CTCallCenter *callCenter;
@@ -202,16 +201,15 @@
     }
     return _listContent;
 }
+
 -(void)initData
 {
-    _addBook=[[XHJAddressBook alloc]init];
-    self.listContent=[_addBook getAllPerson];
-    if(_listContent==nil)
+    self.listContent = [[AddressBookManager sharedManager] getAllPerson];
+    if(_listContent == nil)
     {
         NSLog(@"数据为空或通讯录权限拒绝访问，请到系统开启");
         return;
     }
-    
 }
 
 //开启右侧索引条
